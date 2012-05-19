@@ -10,7 +10,7 @@ namespace VhostsEditor
     {
         private const string DefaultVhostsFile = @"C:\Users\vlad_ko\Desktop\vhosts.conf";
         private string VhostsFile;
-        private Array vhosts;
+        private List<Vhost> vhosts = new List<Vhost>();
         private StreamReader reader;
         public Vhosts()
         {
@@ -54,27 +54,52 @@ namespace VhostsEditor
                 while (line != null)
                 {
                     int indexDocRoot = line.IndexOf("DocumentRoot");
-                    int indexSrvName = line.IndexOf("ServerName");
+                    
                     string DocRoot = "";
                     string SrvName= "";
 
                     if (indexDocRoot != -1)
                     {
-                        
+                        Vhost vhost = new Vhost();
                         DocRoot = line.Replace("DocumentRoot", "");
-                        Console.WriteLine(DocRoot);
-                    }
-                    if (indexSrvName != -1)
-                    {
-                        SrvName = line.Replace("ServerName", "");
-                        Console.WriteLine(SrvName);
+                        vhost.DocRoot = DocRoot;
+                       // Console.WriteLine(DocRoot);
+
+                        line = this.reader.ReadLine();
+                        int indexSrvName = line.IndexOf("ServerName");
+
+                        if (indexSrvName != -1)
+                        {
+                            SrvName = line.Replace("ServerName", "");
+                        //    Console.WriteLine(SrvName);
+                            vhost.SrvName = SrvName;
+                        }
+                        
+                        this.vhosts.Add(vhost);
                     }
 
-                    Vhost vhost = new Vhost(DocRoot, SrvName);
-                    //Console.WriteLine(index);
                     line = this.reader.ReadLine();
                 }
             }
+        }
+        public void Show()
+        {
+            int numberOfVhosts = this.vhosts.Count();
+            for(int i = 0; i < numberOfVhosts; i++)
+            {
+                System.Console.WriteLine("<VirtualHost *>");
+                System.Console.Write("DocumentRoot "); System.Console.WriteLine(this.vhosts.ElementAt(i).DocRoot);
+                System.Console.Write("ServerName "); System.Console.WriteLine(this.vhosts.ElementAt(i).SrvName);
+                System.Console.WriteLine("</VirtualHost>"); 
+            }
+        }
+        public void AddVhost(string DocRoot, string SrvName)
+        {
+            Vhost newVhost = new Vhost();
+            newVhost.DocRoot = "\""+DocRoot+"\"";
+            newVhost.SrvName = "\"" + SrvName+"\"";
+
+            this.vhosts.Add(newVhost);
         }
     }
 }

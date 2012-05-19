@@ -12,6 +12,9 @@ namespace VhostsEditor
         {
             Vhosts vhosts = new Vhosts();
             vhosts.Init();
+           
+            vhosts.AddVhost("c:\\factor", "factor");
+            vhosts.Show();
         }
     }
 }

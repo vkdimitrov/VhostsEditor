@@ -10,10 +10,9 @@ namespace VhostsEditor
         private string DocumentRoot;
         private string ServerName;
 
-        public Vhost(string DocRoot, string SrvName)
+        public Vhost()
         {
-            this.DocumentRoot = DocRoot;
-            this.ServerName = SrvName;
+         
         }
 
         public string DocRoot
