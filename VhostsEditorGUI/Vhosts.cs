@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.IO;
 
-namespace VhostsEditor
+namespace VhostsEditorGUI
 {
     class Vhosts
     {
-        private const string DefaultVhostsFile = @"C:\Users\vlad_ko\Desktop\vhosts.conf";
+         private const string DefaultVhostsFile = @"C:\Users\vlad_ko\Desktop\vhosts.conf";
         private string VhostsFile;
         private List<Vhost> vhosts = new List<Vhost>();
         private StreamReader reader;

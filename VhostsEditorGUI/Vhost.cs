@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace VhostsEditor
+namespace VhostsEditorGUI
 {
     class Vhost
     {
@@ -12,7 +12,7 @@ namespace VhostsEditor
 
         public Vhost()
         {
-         
+
         }
 
         public string DocRoot
