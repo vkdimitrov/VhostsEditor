@@ -15,12 +15,16 @@ namespace VhostsEditorGUI
         {
             InitializeComponent();
 
+            List<string> _items = new List<string>();
             Vhosts vhostsList = new Vhosts();
             vhostsList.Init();
 
-            List<string> _items = new List<string>();
-            _items.Add(vhostsList.vhosts.ElementAt(1).SrvName);
-            vhostsListBox.DataSource = _items;
+            for (int i = 0; i < vhostsList.Count(); i++)
+            {
+                _items.Add(vhostsList.GetVhostSNAt(i));
+            }
+
+            vhostsListBox.DataSource =_items;
 
         }
 

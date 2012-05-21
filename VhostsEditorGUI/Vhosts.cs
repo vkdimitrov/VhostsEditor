@@ -8,10 +8,12 @@ namespace VhostsEditorGUI
 {
     class Vhosts
     {
-         private const string DefaultVhostsFile = @"C:\Users\vlad_ko\Desktop\vhosts.conf";
+        private const string DefaultVhostsFile = @"C:\Users\vlad_ko\Desktop\vhosts.conf";
         private string VhostsFile;
-        public List<Vhost> vhosts = new List<Vhost>();
+        private List<Vhost> vhosts = new List<Vhost>();
         private StreamReader reader;
+        private int count = 0;
+
         public Vhosts()
         {
             this.VhostsFile = DefaultVhostsFile;
@@ -45,6 +47,18 @@ namespace VhostsEditorGUI
             }
         }
 
+        public int Count()
+        {
+            return this.count;
+        }
+        public string GetVhostDRAt(int position)
+        {
+            return this.vhosts.ElementAt(position).DocRoot;
+        }
+        public string GetVhostSNAt(int position)
+        {
+            return this.vhosts.ElementAt(position).SrvName;
+        }
         public void Init()
         {
             using (this.reader)
@@ -76,6 +90,7 @@ namespace VhostsEditorGUI
                         }
                         
                         this.vhosts.Add(vhost);
+                        this.count++;
                     }
 
                     line = this.reader.ReadLine();
@@ -99,6 +114,7 @@ namespace VhostsEditorGUI
             newVhost.DocRoot = "\""+DocRoot+"\"";
             newVhost.SrvName = "\"" + SrvName+"\"";
 
+            this.count++;
             this.vhosts.Add(newVhost);
         }
     }

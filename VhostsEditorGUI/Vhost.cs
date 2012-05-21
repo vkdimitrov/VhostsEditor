@@ -7,8 +7,10 @@ namespace VhostsEditorGUI
 {
     class Vhost
     {
+        private string OpenDirective = @"<VirtualHost *>";
         private string DocumentRoot;
         private string ServerName;
+        private string CloseDirective = @"</VirtualHost>";
 
         public Vhost()
         {
@@ -24,6 +26,16 @@ namespace VhostsEditorGUI
         {
             get { return this.ServerName; }
             set { this.ServerName = value; }
+        }
+        public string OpenD
+        {
+            get { return this.OpenDirective; }
+            set { this.OpenDirective = value; }
+        }
+        public string CloseD
+        {
+            get { return this.CloseDirective; }
+            set { this.CloseDirective = value; }
         }
 
     }

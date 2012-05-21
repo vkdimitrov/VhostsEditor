@@ -13,8 +13,9 @@ namespace VhostsEditorGUI
         [STAThread]
         static void Main()
         {
-        
-            
+
+            Vhosts vhostsList = new Vhosts();
+            vhostsList.Init();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new main());
