@@ -48,6 +48,7 @@
             this.Add.TabIndex = 0;
             this.Add.Text = "Add";
             this.Add.UseVisualStyleBackColor = true;
+            this.Add.Click += new System.EventHandler(this.Add_Click);
             // 
             // Edit
             // 
@@ -75,6 +76,7 @@
             this.ResetApache.TabIndex = 3;
             this.ResetApache.Text = "ResetApache";
             this.ResetApache.UseVisualStyleBackColor = true;
+            this.ResetApache.Click += new System.EventHandler(this.ResetApache_Click);
             // 
             // contextMenuStrip1
             // 
@@ -91,6 +93,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(334, 162);
             this.dataGridView1.TabIndex = 5;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // ServerName
             // 

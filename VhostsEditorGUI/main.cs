@@ -15,5 +15,22 @@ namespace VhostsEditorGUI
         {
             InitializeComponent();
         }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            
+        }
+
+        private void ResetApache_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start(@"C:\Users\vlad_ko\Desktop\apache_reset.bat");
+        }
+
+        private void Add_Click(object sender, EventArgs e)
+        {
+            Add form = new Add();
+            form.Show();
+            
+        }
     }
 }
