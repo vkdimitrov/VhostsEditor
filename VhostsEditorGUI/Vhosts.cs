@@ -10,7 +10,7 @@ namespace VhostsEditorGUI
     {
          private const string DefaultVhostsFile = @"C:\Users\vlad_ko\Desktop\vhosts.conf";
         private string VhostsFile;
-        private List<Vhost> vhosts = new List<Vhost>();
+        public List<Vhost> vhosts = new List<Vhost>();
         private StreamReader reader;
         public Vhosts()
         {

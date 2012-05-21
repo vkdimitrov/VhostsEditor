@@ -14,11 +14,19 @@ namespace VhostsEditorGUI
         public main()
         {
             InitializeComponent();
+
+            Vhosts vhostsList = new Vhosts();
+            vhostsList.Init();
+
+            List<string> _items = new List<string>();
+            _items.Add(vhostsList.vhosts.ElementAt(1).SrvName);
+            vhostsListBox.DataSource = _items;
+
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            
+
         }
 
         private void ResetApache_Click(object sender, EventArgs e)
@@ -31,6 +39,11 @@ namespace VhostsEditorGUI
             Add form = new Add();
             form.Show();
             
+        }
+        
+        private void vhostsListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

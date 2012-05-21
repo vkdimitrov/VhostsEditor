@@ -28,22 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
+            this.Ok = new System.Windows.Forms.Button();
             this.ServerName = new System.Windows.Forms.TextBox();
             this.DocumentRoot = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.labelName = new System.Windows.Forms.Label();
+            this.WebRoot = new System.Windows.Forms.Label();
             this.Browse = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // button1
+            // Ok
             // 
-            this.button1.Location = new System.Drawing.Point(111, 96);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(72, 35);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            this.Ok.Location = new System.Drawing.Point(111, 96);
+            this.Ok.Name = "Ok";
+            this.Ok.Size = new System.Drawing.Size(72, 35);
+            this.Ok.TabIndex = 0;
+            this.Ok.Text = "Ok";
+            this.Ok.UseVisualStyleBackColor = true;
             // 
             // ServerName
             // 
@@ -59,23 +59,23 @@
             this.DocumentRoot.Size = new System.Drawing.Size(171, 20);
             this.DocumentRoot.TabIndex = 2;
             // 
-            // label1
+            // labelName
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 6);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "label1";
+            this.labelName.AutoSize = true;
+            this.labelName.Location = new System.Drawing.Point(12, 6);
+            this.labelName.Name = "labelName";
+            this.labelName.Size = new System.Drawing.Size(35, 13);
+            this.labelName.TabIndex = 3;
+            this.labelName.Text = "Name";
             // 
-            // label2
+            // WebRoot
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 43);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 13);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "label2";
+            this.WebRoot.AutoSize = true;
+            this.WebRoot.Location = new System.Drawing.Point(12, 43);
+            this.WebRoot.Name = "WebRoot";
+            this.WebRoot.Size = new System.Drawing.Size(53, 13);
+            this.WebRoot.TabIndex = 4;
+            this.WebRoot.Text = "WebRoot";
             // 
             // Browse
             // 
@@ -93,11 +93,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(292, 143);
             this.Controls.Add(this.Browse);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.WebRoot);
+            this.Controls.Add(this.labelName);
             this.Controls.Add(this.DocumentRoot);
             this.Controls.Add(this.ServerName);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.Ok);
             this.Name = "Add";
             this.Text = "Add";
             this.ResumeLayout(false);
@@ -107,11 +107,11 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button Ok;
         private System.Windows.Forms.TextBox ServerName;
         private System.Windows.Forms.TextBox DocumentRoot;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label labelName;
+        private System.Windows.Forms.Label WebRoot;
         private System.Windows.Forms.Button Browse;
     }
 }
