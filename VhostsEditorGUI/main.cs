@@ -24,12 +24,13 @@ namespace VhostsEditorGUI
                 _items.Add(vhostsList.GetVhostSNAt(i));
             }
 
-            vhostsListBox.DataSource =_items;
+            vhostsListBox.DataSource = _items;
 
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+    
 
         }
 

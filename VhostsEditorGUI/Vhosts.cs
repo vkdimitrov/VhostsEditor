@@ -3,16 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.IO;
-
+using System.Data;
+using System.Drawing;
+using System.Windows.Forms;
 namespace VhostsEditorGUI
 {
     class Vhosts
     {
         private const string DefaultVhostsFile = @"C:\Users\vlad_ko\Desktop\vhosts.conf";
         private string VhostsFile;
-        private List<Vhost> vhosts = new List<Vhost>();
+        private static List<Vhost> vhosts = new List<Vhost>();
         private StreamReader reader;
-        private int count = 0;
+        private StreamWriter writer;
+        private static int count = 0;
 
         public Vhosts()
         {
@@ -49,15 +52,15 @@ namespace VhostsEditorGUI
 
         public int Count()
         {
-            return this.count;
+            return Vhosts.count;
         }
         public string GetVhostDRAt(int position)
         {
-            return this.vhosts.ElementAt(position).DocRoot;
+            return Vhosts.vhosts.ElementAt(position).DocRoot;
         }
         public string GetVhostSNAt(int position)
         {
-            return this.vhosts.ElementAt(position).SrvName;
+            return Vhosts.vhosts.ElementAt(position).SrvName;
         }
         public void Init()
         {
@@ -88,23 +91,24 @@ namespace VhostsEditorGUI
                         //    Console.WriteLine(SrvName);
                             vhost.SrvName = SrvName;
                         }
-                        
-                        this.vhosts.Add(vhost);
-                        this.count++;
+
+                        Vhosts.vhosts.Add(vhost);
+                        Vhosts.count++;
                     }
 
                     line = this.reader.ReadLine();
                 }
             }
+            this.reader.Close();
         }
         public void Show()
         {
-            int numberOfVhosts = this.vhosts.Count();
+            int numberOfVhosts = Vhosts.vhosts.Count();
             for(int i = 0; i < numberOfVhosts; i++)
             {
                 System.Console.WriteLine("<VirtualHost *>");
-                System.Console.Write("DocumentRoot "); System.Console.WriteLine(this.vhosts.ElementAt(i).DocRoot);
-                System.Console.Write("ServerName "); System.Console.WriteLine(this.vhosts.ElementAt(i).SrvName);
+                System.Console.Write("DocumentRoot "); System.Console.WriteLine(Vhosts.vhosts.ElementAt(i).DocRoot);
+                System.Console.Write("ServerName "); System.Console.WriteLine(Vhosts.vhosts.ElementAt(i).SrvName);
                 System.Console.WriteLine("</VirtualHost>"); 
             }
         }
@@ -112,10 +116,40 @@ namespace VhostsEditorGUI
         {
             Vhost newVhost = new Vhost();
             newVhost.DocRoot = "\""+DocRoot+"\"";
-            newVhost.SrvName = "\"" + SrvName+"\"";
+            newVhost.SrvName =  SrvName;
 
-            this.count++;
-            this.vhosts.Add(newVhost);
+            Vhosts.count++;
+            Vhosts.vhosts.Add(newVhost);
+        }
+        public void ToFile()
+        {
+            this.VhostsFile = DefaultVhostsFile;
+            try
+            {
+                this.writer = new StreamWriter("C:\\Users\\vlad_ko\\Desktop\\vhosts.conf");
+                //this.writer = new StreamWriter(Vhosts.DefaultVhostsFile);
+            }
+            catch (FileNotFoundException)
+            {
+                Console.Error.WriteLine("cannot find the file");
+            }
+            catch (IOException)
+            {
+                MessageBox.Show("Dot Net Perls is the best.");
+                Console.Error.WriteLine("cannot open the file");
+            }
+
+            using (this.writer)
+            {
+                this.writer.WriteLine("NameVirtualHost *");
+                for (int i = 0; i < Vhosts.count; i++) 
+                {
+                    this.writer.WriteLine("<VirtualHost *>");
+                    this.writer.WriteLine(" DocumentRoot "+this.GetVhostDRAt(i));
+                    this.writer.WriteLine(" ServerName "+this.GetVhostSNAt(i));
+                    this.writer.WriteLine("</VirtualHost>");
+                }
+            }
         }
     }
 }

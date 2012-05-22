@@ -14,7 +14,6 @@ namespace VhostsEditorGUI
         public Add()
         {
             InitializeComponent();
-            //this.vhosts = vList;
         }
 
         FolderBrowserDialog fbd = new FolderBrowserDialog();
@@ -29,7 +28,10 @@ namespace VhostsEditorGUI
 
         private void Ok_Click(object sender, EventArgs e)
         {
-
+            Vhosts vhostsList = new Vhosts();
+            vhostsList.AddVhost(DocumentRoot.Text, ServerName.Text);
+            vhostsList.ToFile();
+            this.Close();
         }
     }
 }
