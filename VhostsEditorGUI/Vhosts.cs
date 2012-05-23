@@ -10,7 +10,7 @@ namespace VhostsEditorGUI
 {
     class Vhosts
     {
-        private const string DefaultVhostsFile = @"C:\Users\vlad_ko\Desktop\vhosts.conf";
+        private const string DefaultVhostsFile = @"C:\xampp\apache\conf\extra\httpd-vhosts.conf";
         private string VhostsFile;
         private static List<Vhost> vhosts = new List<Vhost>();
         private StreamReader reader;
@@ -19,35 +19,7 @@ namespace VhostsEditorGUI
 
         public Vhosts()
         {
-            this.VhostsFile = DefaultVhostsFile;
-            try 
-            {
-                this.reader = new StreamReader(this.VhostsFile);
-            }
-            catch (FileNotFoundException)
-            {
-                Console.Error.WriteLine("nqma fail");
-            }
-            catch (IOException)
-            {
-                Console.Error.WriteLine("nemoga da otvorq faila");
-            }
-        }
-        public Vhosts(string filename)
-        {
-            this.VhostsFile = filename;
-            try
-            {
-                this.reader = new StreamReader(DefaultVhostsFile);
-            }
-            catch (FileNotFoundException)
-            {
-                Console.Error.WriteLine("nqma fail");
-            }
-            catch (IOException)
-            {
-                Console.Error.WriteLine("nemoga da otvorq faila");
-            }
+            
         }
 
         public int Count()
@@ -62,8 +34,28 @@ namespace VhostsEditorGUI
         {
             return Vhosts.vhosts.ElementAt(position).SrvName;
         }
+
+        public void Clear()
+        {
+            Vhosts.vhosts.Clear();
+            Vhosts.count = 0;
+        }
         public void Init()
         {
+            this.Clear();
+            this.VhostsFile = DefaultVhostsFile;
+            try
+            {
+                this.reader = new StreamReader(this.VhostsFile);
+            }
+            catch (FileNotFoundException)
+            {
+                Console.Error.WriteLine("nqma fail");
+            }
+            catch (IOException)
+            {
+                Console.Error.WriteLine("nemoga da otvorq faila");
+            }
             using (this.reader)
             {
                 string line = this.reader.ReadLine();
@@ -126,8 +118,8 @@ namespace VhostsEditorGUI
             this.VhostsFile = DefaultVhostsFile;
             try
             {
-                this.writer = new StreamWriter("C:\\Users\\vlad_ko\\Desktop\\vhosts.conf");
-                //this.writer = new StreamWriter(Vhosts.DefaultVhostsFile);
+                //this.writer = new StreamWriter("C:\\Users\\vlad_ko\\Desktop\\vhosts2.conf");
+                this.writer = new StreamWriter(Vhosts.DefaultVhostsFile+".tmp");
             }
             catch (FileNotFoundException)
             {
@@ -145,11 +137,12 @@ namespace VhostsEditorGUI
                 for (int i = 0; i < Vhosts.count; i++) 
                 {
                     this.writer.WriteLine("<VirtualHost *>");
-                    this.writer.WriteLine(" DocumentRoot "+this.GetVhostDRAt(i));
-                    this.writer.WriteLine(" ServerName "+this.GetVhostSNAt(i));
+                    this.writer.WriteLine(" DocumentRoot "+this.GetVhostDRAt(i).Trim());
+                    this.writer.WriteLine(" ServerName "+this.GetVhostSNAt(i).Trim());
                     this.writer.WriteLine("</VirtualHost>");
                 }
             }
+            File.Copy(Vhosts.DefaultVhostsFile + ".tmp", Vhosts.DefaultVhostsFile,true);
         }
     }
 }

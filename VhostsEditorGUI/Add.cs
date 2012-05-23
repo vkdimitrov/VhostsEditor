@@ -32,6 +32,7 @@ namespace VhostsEditorGUI
             vhostsList.AddVhost(DocumentRoot.Text, ServerName.Text);
             vhostsList.ToFile();
             this.Close();
+            
         }
     }
 }
