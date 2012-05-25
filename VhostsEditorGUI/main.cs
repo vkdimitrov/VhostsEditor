@@ -65,5 +65,20 @@ namespace VhostsEditorGUI
            // MessageBox.Show("Refresh");
             this.FillVhostsBox(vhostsList);
         }
+
+        private void Delete_Click(object sender, EventArgs e)
+        {
+           vhostsList.DelVhostBySN(vhostsListBox.Text);
+           vhostsList.ToFile();
+           this.FillVhostsBox(vhostsList);
+        }
+
+        private void Edit_Click(object sender, EventArgs e)
+        {
+            vhostsList.GetVhostBySN(vhostsListBox.Text);
+            edit form = new edit(vhostsList.GetVhostBySN(vhostsListBox.Text).DocRoot, vhostsList.GetVhostBySN(vhostsListBox.Text).SrvName);
+            form.FormClosed += new FormClosedEventHandler(child_FormClosed);
+            form.Show();
+        }
     }
 }

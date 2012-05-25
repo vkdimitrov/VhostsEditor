@@ -34,6 +34,31 @@ namespace VhostsEditorGUI
         {
             return Vhosts.vhosts.ElementAt(position).SrvName;
         }
+        public Vhost GetVhostBySN(string SN)
+        {
+            return Vhosts.vhosts.Find(item => item.SrvName == SN);
+        }
+
+        public int GetPositionBySN(string SN)
+        {
+            for (int i = 0; i < Vhosts.count; i++)
+            {
+                if (Vhosts.vhosts.ElementAt(i).SrvName == SN.Trim())
+                {
+                    return i;
+                }
+            }
+            return -1;
+        }
+
+        public void EditVhostByPosition(int Pos, string nSN, string nDR)
+        {
+           // this.DelVhostBySN(SN.Trim());
+            Vhosts.vhosts.ElementAt(Pos).DocRoot = nDR;
+            Vhosts.vhosts.ElementAt(Pos).SrvName = nSN; 
+            //Vhosts.count--;
+          //  this.AddVhost(nDR, nSN);
+        }
 
         public void Clear()
         {
@@ -71,7 +96,7 @@ namespace VhostsEditorGUI
                     {
                         Vhost vhost = new Vhost();
                         DocRoot = line.Replace("DocumentRoot", "");
-                        vhost.DocRoot = DocRoot;
+                        vhost.DocRoot = DocRoot.Trim();
                        // Console.WriteLine(DocRoot);
 
                         line = this.reader.ReadLine();
@@ -81,7 +106,7 @@ namespace VhostsEditorGUI
                         {
                             SrvName = line.Replace("ServerName", "");
                         //    Console.WriteLine(SrvName);
-                            vhost.SrvName = SrvName;
+                            vhost.SrvName = SrvName.Trim();
                         }
 
                         Vhosts.vhosts.Add(vhost);
@@ -107,11 +132,23 @@ namespace VhostsEditorGUI
         public void AddVhost(string DocRoot, string SrvName)
         {
             Vhost newVhost = new Vhost();
-            newVhost.DocRoot = "\""+DocRoot+"\"";
-            newVhost.SrvName =  SrvName;
+            newVhost.DocRoot = "\""+DocRoot+"\"".Trim();
+            newVhost.SrvName =  SrvName.Trim();
 
             Vhosts.count++;
             Vhosts.vhosts.Add(newVhost);
+        }
+
+        public void DelVhostBySN(string SN)
+        {
+            
+            if (this.GetVhostBySN(SN) != null)
+            {
+                
+                Vhosts.vhosts.RemoveAll(item => item.SrvName == SN);
+                Vhosts.count--;
+              
+            }
         }
         public void ToFile()
         {

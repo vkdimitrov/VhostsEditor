@@ -52,6 +52,12 @@
     <Compile Include="Add.Designer.cs">
       <DependentUpon>Add.cs</DependentUpon>
     </Compile>
+    <Compile Include="edit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="edit.Designer.cs">
+      <DependentUpon>edit.cs</DependentUpon>
+    </Compile>
     <Compile Include="main.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -64,6 +70,9 @@
     <Compile Include="Vhosts.cs" />
     <EmbeddedResource Include="Add.resx">
       <DependentUpon>Add.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="edit.resx">
+      <DependentUpon>edit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="main.resx">
       <DependentUpon>main.cs</DependentUpon>

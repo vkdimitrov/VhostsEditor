@@ -11,7 +11,7 @@ namespace VhostsEditorGUI
         private string DocumentRoot;
         private string ServerName;
         private string CloseDirective = @"</VirtualHost>";
-
+       
         public Vhost()
         {
 
