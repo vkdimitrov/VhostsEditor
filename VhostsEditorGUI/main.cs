@@ -41,9 +41,16 @@ namespace VhostsEditorGUI
 
         private void ResetApache_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start(@"C:\xampp\apache_stop.bat");
-            Thread.Sleep(3);
-            System.Diagnostics.Process.Start(@"C:\xampp\apache_start.bat");
+
+            System.Diagnostics.ProcessStartInfo proc = new System.Diagnostics.ProcessStartInfo();
+            proc.WindowStyle = System.Diagnostics.ProcessWindowStyle.Minimized;
+            proc.FileName = @"C:\xampp\apache_stop.bat";
+            System.Diagnostics.Process.Start(proc);
+            Thread.Sleep(1200);
+            System.Diagnostics.ProcessStartInfo proc2 = new System.Diagnostics.ProcessStartInfo();
+            proc2.WindowStyle = System.Diagnostics.ProcessWindowStyle.Minimized;
+            proc2.FileName = @"C:\xampp\apache_start.bat";
+            System.Diagnostics.Process.Start(proc2);
         }
 
         private void Add_Click(object sender, EventArgs e)
@@ -79,6 +86,17 @@ namespace VhostsEditorGUI
             edit form = new edit(vhostsList.GetVhostBySN(vhostsListBox.Text).DocRoot, vhostsList.GetVhostBySN(vhostsListBox.Text).SrvName);
             form.FormClosed += new FormClosedEventHandler(child_FormClosed);
             form.Show();
+        }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            About form = new About();
+            form.Show();
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }
