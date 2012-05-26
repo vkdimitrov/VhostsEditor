@@ -65,6 +65,7 @@
     <Compile Include="edit.Designer.cs">
       <DependentUpon>edit.cs</DependentUpon>
     </Compile>
+    <Compile Include="HostFile.cs" />
     <Compile Include="main.cs">
       <SubType>Form</SubType>
     </Compile>

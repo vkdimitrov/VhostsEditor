@@ -180,6 +180,8 @@ namespace VhostsEditorGUI
                 }
             }
             File.Copy(Vhosts.DefaultVhostsFile + ".tmp", Vhosts.DefaultVhostsFile,true);
+            HostFile hosts = new HostFile();
+            hosts.ToFile();
         }
     }
 }
