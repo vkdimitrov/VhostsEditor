@@ -43,12 +43,12 @@ namespace VhostsEditorGUI
         {
 
             System.Diagnostics.ProcessStartInfo proc = new System.Diagnostics.ProcessStartInfo();
-            proc.WindowStyle = System.Diagnostics.ProcessWindowStyle.Minimized;
+            proc.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
             proc.FileName = @"C:\xampp\apache_stop.bat";
             System.Diagnostics.Process.Start(proc);
             Thread.Sleep(1200);
             System.Diagnostics.ProcessStartInfo proc2 = new System.Diagnostics.ProcessStartInfo();
-            proc2.WindowStyle = System.Diagnostics.ProcessWindowStyle.Minimized;
+            proc2.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
             proc2.FileName = @"C:\xampp\apache_start.bat";
             System.Diagnostics.Process.Start(proc2);
         }
