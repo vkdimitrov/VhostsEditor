@@ -81,10 +81,11 @@ namespace VhostsEditorGUI
                     this.writer.WriteLine("###### VhostsEditor ######");
                     for (int i = 0; i < vhostsList.Count(); i++)
                     {
-                        this.writer.WriteLine(vhostsList.GetVhostSNAt(i).Trim()+"   127.0.0.1");
+                        this.writer.WriteLine("127.0.0.1        "+vhostsList.GetVhostSNAt(i).Trim());
                     }        
                 }
             
         }
     }
 }
+    
