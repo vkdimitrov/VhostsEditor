@@ -80,6 +80,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Symboliclink.cs" />
     <Compile Include="Vhost.cs" />
     <Compile Include="Vhosts.cs" />
     <EmbeddedResource Include="About.resx">

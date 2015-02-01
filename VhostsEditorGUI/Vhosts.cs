@@ -124,15 +124,19 @@ namespace VhostsEditorGUI
             for(int i = 0; i < numberOfVhosts; i++)
             {
                 System.Console.WriteLine("<VirtualHost *>");
-                System.Console.Write("DocumentRoot "); System.Console.WriteLine(Vhosts.vhosts.ElementAt(i).DocRoot);
-                System.Console.Write("ServerName "); System.Console.WriteLine(Vhosts.vhosts.ElementAt(i).SrvName);
+                System.Console.Write("DocumentRoot ");
+                System.Console.WriteLine(Vhosts.vhosts.ElementAt(i).DocRoot);
+                System.Console.Write("ServerName ");
+                System.Console.WriteLine(Vhosts.vhosts.ElementAt(i).SrvName);
                 System.Console.WriteLine("</VirtualHost>"); 
             }
         }
         public void AddVhost(string DocRoot, string SrvName)
         {
+            Symboliclink s = new Symboliclink(DocRoot);
+
             Vhost newVhost = new Vhost();
-            newVhost.DocRoot = "\""+DocRoot+"\"".Trim();
+            newVhost.DocRoot = "\"" + s.fullPath + "\"".Trim();
             newVhost.SrvName =  SrvName.Trim();
 
             Vhosts.count++;

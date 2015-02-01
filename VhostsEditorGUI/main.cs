@@ -98,5 +98,10 @@ namespace VhostsEditorGUI
         {
             Close();
         }
+
+        private void main_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
