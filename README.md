@@ -1,7 +1,7 @@
 VhostsEditor
 ============
 
-Simple gui tool for edit  XAMPP virtual hosts on windows machines
+Simple gui tool for editing  XAMPP virtual hosts on windows machines
 
 1. Instalation
   Just copy VhostsEditorGUI.exe from ./VhostsEditor/bin/release to your xampp folder and run it
@@ -19,10 +19,10 @@ Simple gui tool for edit  XAMPP virtual hosts on windows machines
       - Edit existing record in windows hosts file
        
   Delete
-      - Delete vhost from apache conf and windows hosts file
+      - Delete vhost from Apache conf and windows hosts file
       
   ResetApache
-      - Use it to reload apache configuration
+      - Use it to reload Apache configuration
 
 3. TODO
       - Options form
